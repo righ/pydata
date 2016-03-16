@@ -12,7 +12,7 @@
 
         - python-pip
         - python-dev
-        - python-matplotlib-data
+        - python-matplotlib
         - python-pil
         - python-numpy
         - python-sympy
