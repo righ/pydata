@@ -1,0 +1,30 @@
+- hosts: main
+  become: yes
+  tasks:
+    - shell: apt-get update
+    - name: install libs
+      apt: name={{item}} state=installed
+      with_items:
+        - git
+
+        - gcc
+        - g++
+
+        - python-pip
+        - python-dev
+        - python-matplotlib-data
+        - python-pil
+        - python-numpy
+        - python-sympy
+        - python-pandas
+        - python-scipy
+        - python-sklearn
+
+    - pip: name={{item}}
+      with_items:
+        - jupyter
+
+    - shell: hostname {{hostname}}
+
+    - shell: echo "cd ~/data/" > .bash_profile
+      become: no
