@@ -1,7 +1,8 @@
 - hosts: main
-  become: yes
+  sudo: yes
   tasks:
-    - shell: apt-get update
+
+    - apt: update_cache=yes
     - name: install libs
       apt: name={{item}} state=installed
       with_items:
@@ -9,6 +10,8 @@
 
         - gcc
         - g++
+        - llvm-3.6-dev
+        - libedit-dev
 
         - python-pip
         - python-dev
@@ -19,12 +22,22 @@
         - python-pandas
         - python-scipy
         - python-sklearn
-
-    - pip: name={{item}}
-      with_items:
-        - jupyter
+        - cython
 
     - shell: hostname {{hostname}}
+    - template: src=templates/hosts dest=/etc/hosts
+    - template: src=templates/hostname dest=/etc/hostname
 
     - shell: echo "cd ~/data/" > .bash_profile
-      become: no
+      sudo: no
+
+    - shell: pip install --upgrade pip
+
+    - pip: name={{item}}
+      environment:
+        LLVM_CONFIG: '/usr/bin/llvm-config-3.6'
+      with_items:
+        - jupyter
+        - enum34
+        - llvmlite==0.8.0
+        - numba==0.23.1

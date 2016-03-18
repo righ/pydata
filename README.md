@@ -8,7 +8,7 @@
 ```sh
 $ vagrant up
 $ vagrant provision
-# or the following (windows Cygwin and so on)
+# or the following (Windows Cygwin and so on)
 $ ansible-playbook -i inventory/vagrant provision.yml
 ```
 
@@ -21,7 +21,7 @@ The following directories are shared between host and guest.
 ```sh
 $ vagrant ssh
 ```
-When you log in, you will be automatically moved to `~/data/` directory.
+As you log in, you will be automatically moved to `~/data/` directory.
 
 ### Start up jupyter notebook
 Execute the following on guest(virtual) environment.
@@ -29,9 +29,18 @@ Execute the following on guest(virtual) environment.
 $ jupyter notebook --ip=* --port=8888
 ```
 
-And, try to access: http://192.168.35.125:8888/
+When finished, try to access: http://192.168.35.125:8888/
 
-You can access from host environment or machine on the same network.
+You can access from host environment.
+
+If you would like to share the window with other people,
+please remove comment-out of Vagrantfile (near #L33).
+And, please ask them to access `http://[your ip]:8888/`.
+
+```ruby
+  config.vm.network "forwarded_port", guest: 8888, host: 8888
+```
+
 
 ## Shutdown
 ```sh
@@ -55,5 +64,9 @@ $ vagrant up --provision # or vagrant provision
 ```
 
 ## History
+### 2016-03-18
+* Updated readme
+* Added `numba` and `cython` installation.
+
 ### 2016-03-17
-* initial commit
+* Initial commit
