@@ -1,6 +1,6 @@
 # Requirements
 * Vagrant >= 1.7.4
-* Ansible >= 1.9.3
+* Ansible >= 1.8.4
 * VirtualBox >= 5.0.6
 
 # Usage
@@ -63,10 +63,31 @@ $ git pull
 $ vagrant up --provision # or vagrant provision
 ```
 
-## History
-### 2016-03-18
+## Available libraries
+The following libraries work in python3.
+
+* jupyter
+* numpy
+* matplotlib
+* pandas
+* sympy
+* scipy
+* numba
+* cython
+* numba
+* pil
+
+# History
+## 2016-03-19
+* Python3
+
+## 2016-03-18
 * Updated readme
 * Added `numba` and `cython` installation.
 
-### 2016-03-17
+## 2016-03-17
 * Initial commit
+
+
+# future support
+* OpenCV3

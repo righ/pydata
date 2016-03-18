@@ -13,16 +13,28 @@
         - llvm-3.6-dev
         - libedit-dev
 
-        - python-pip
-        - python-dev
-        - python-matplotlib
-        - python-pil
-        - python-numpy
-        - python-sympy
-        - python-pandas
-        - python-scipy
-        - python-sklearn
-        - cython
+        - python3-pip
+        - python3-dev
+        - python3-matplotlib
+        - python3-pil
+        - python3-numpy
+        - python3-pandas
+        - python3-scipy
+        - cython3
+
+    - shell: |
+        pip install --upgrade pip
+        pip3 install --upgrade pip
+
+    - pip: name={{item}} executable=/usr/bin/pip3
+      environment:
+        LLVM_CONFIG: '/usr/bin/llvm-config-3.6'
+      with_items:
+        - jupyter
+        - sympy
+        - llvmlite==0.8.0
+        - numba==0.23.1
+        - scikit-learn
 
     - shell: hostname {{hostname}}
     - template: src=templates/hosts dest=/etc/hosts
@@ -30,14 +42,3 @@
 
     - shell: echo "cd ~/data/" > .bash_profile
       sudo: no
-
-    - shell: pip install --upgrade pip
-
-    - pip: name={{item}}
-      environment:
-        LLVM_CONFIG: '/usr/bin/llvm-config-3.6'
-      with_items:
-        - jupyter
-        - enum34
-        - llvmlite==0.8.0
-        - numba==0.23.1
