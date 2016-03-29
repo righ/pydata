@@ -1,5 +1,8 @@
 - hosts: main
   sudo: yes
+  vars:
+    tensorflow_version: 0.7.1
+    tensorflow_wheel_url: https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-{{tensorflow_version}}-cp34-none-linux_x86_64.whl
   tasks:
 
     - apt: update_cache=yes
@@ -35,6 +38,7 @@
         - llvmlite==0.8.0
         - numba==0.23.1
         - scikit-learn
+        - '{{tensorflow_wheel_url}}'
 
     - shell: hostname {{hostname}}
     - template: src=templates/hosts dest=/etc/hosts
@@ -42,3 +46,4 @@
 
     - shell: echo "cd ~/data/" > .bash_profile
       sudo: no
+

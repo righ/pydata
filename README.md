@@ -34,13 +34,11 @@ When finished, try to access: http://192.168.35.125:8888/
 You can access from host environment.
 
 If you would like to share the window with other people,
-please remove comment-out of Vagrantfile (near #L33).
-And, please ask them to access `http://[your ip]:8888/`.
+please remove comment-out of Vagrantfile (near #L33) and restart vagrant.
 
 ```ruby
   config.vm.network "forwarded_port", guest: 8888, host: 8888
 ```
-
 
 ## Shutdown
 ```sh
@@ -72,14 +70,41 @@ The following libraries work in python3.
 * pandas
 * sympy
 * scipy
-* numba
 * cython
 * numba
 * pil
+* tensorflow
+
+## About tensorflow
+### Documents
+* https://github.com/tensorflow/tensorflow
+
+### Study tensorflow
+```sh
+$ git clone https://github.com/tensorflow/tensorflow.git ~/data/tensorflow
+$ cd ~/data/tensorflow/tensorflow/examples
+# if another session already exists on the same port, execute this command, after closing existing session.
+$ jupyter notebook --ip=* --port=8888
+```
+
+#### tutorial
+* http://192.168.35.125:8888/notebooks/tutorials/deepdream/deepdream.ipynb
+
+#### udacity
+* http://192.168.35.125:8888/notebooks/udacity/1_notmnist.ipynb
+* http://192.168.35.125:8888/notebooks/udacity/2_fullyconnected.ipynb
+* http://192.168.35.125:8888/notebooks/udacity/3_regularization.ipynb
+* http://192.168.35.125:8888/notebooks/udacity/4_convolutions.ipynb
+* http://192.168.35.125:8888/notebooks/udacity/5_word2vec.ipynb
+* http://192.168.35.125:8888/notebooks/udacity/6_lstm.ipynb
 
 # History
+## 2016-03-30
+* Added `tensorflow` installation.
+
 ## 2016-03-19
-* Python3
+* Suppoted Python3.
+* Unsupported Python2.
 
 ## 2016-03-18
 * Updated readme
