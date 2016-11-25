@@ -29,7 +29,7 @@
         pip install --upgrade pip
         pip3 install --upgrade pip
 
-    - pip: name={{item}} executable=/usr/bin/pip3
+    - pip: name={{item}} executable=/usr/local/bin/pip3
       environment:
         LLVM_CONFIG: '/usr/bin/llvm-config-3.6'
       with_items:
