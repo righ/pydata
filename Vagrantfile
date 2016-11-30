@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
 
   # https://atlas.hashicorp.com/bento/boxes/ubuntu-14.04
-  config.vm.box = "bento/ubuntu-14.04"
+  config.vm.box = "bento/ubuntu-16.04"
   config.vm.network "private_network", ip: "192.168.35.125"
   config.vm.synced_folder "data/", "/home/vagrant/data/",
     owner: "vagrant", group: "vagrant"

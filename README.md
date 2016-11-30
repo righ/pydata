@@ -1,7 +1,7 @@
 # Requirements
-* Vagrant >= 1.7.4
+* Vagrant >= 1.8.5
 * Ansible >= 1.8.4
-* VirtualBox >= 5.0.6
+* VirtualBox >= 5.0.14
 
 # Usage
 ## Setup
@@ -99,6 +99,10 @@ $ jupyter notebook --ip=* --port=8888
 * http://192.168.35.125:8888/notebooks/udacity/6_lstm.ipynb
 
 # History
+## 2016-11-30
+* Upgrade ubuntu version from 14.04 to 16.04
+  * Libraries installation has been migrated to pip.
+
 ## 2016-03-30
 * Added `tensorflow` installation.
 
