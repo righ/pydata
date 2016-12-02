@@ -61,6 +61,10 @@ $ git pull
 $ vagrant up --provision # or vagrant provision
 ```
 
+## Config
+Part of config items have cut out to "config.rb".
+If you want to modify config, then please rewrite the file.
+
 ## Available libraries
 The following libraries work in python3.
 
@@ -99,6 +103,11 @@ $ jupyter notebook --ip=* --port=8888
 * http://192.168.35.125:8888/notebooks/udacity/6_lstm.ipynb
 
 # History
+## 2016-12-02
+* Fixed bug for vagrant "1.8.7".
+* Added config items.
+* Cut out config items to "config.rb".
+
 ## 2016-11-30
 * Upgrade ubuntu version from 14.04 to 16.04
   * Libraries installation has been migrated to pip.
