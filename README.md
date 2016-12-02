@@ -62,8 +62,13 @@ $ vagrant up --provision # or vagrant provision
 ```
 
 ## Config
-Part of config items have cut out to "config.rb".
+Part of config items has been cut out to "config.rb".
 If you want to modify config, then please rewrite the file.
+
+When making a change to the file, please do not add it to this repository.
+We recommend that you exclude it from monitoring at the time of cloning as following::
+
+`$ git update-index --skip-worktree config.rb`
 
 ## Available libraries
 The following libraries work in python3.
