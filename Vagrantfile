@@ -1,5 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+begin
+ require './config'
+rescue LoadError => e
+ puts 'config.rb does not exist!'
+end
 
 Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
@@ -21,6 +26,17 @@ Vagrant.configure(2) do |config|
     ansible.limit = "all"
   end
 
+  config.vm.provider "virtualbox" do |vb|
+      vb.name = ($vb_name or 'pydata')
+      vb.memory = ($vb_memory or "1024")
+      vb.gui = ($vb_gui or false)
+      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+  end
+
+  if $forwarding_port_guest and $forwarding_port_host then
+      config.vm.network "forwarded_port", guest: $forwarding_port_guest, host: $forwarding_port_host
+  end
+  
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
